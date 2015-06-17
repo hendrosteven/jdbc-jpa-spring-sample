@@ -12,10 +12,9 @@ import java.util.List;
  *
  * @author user
  */
-public interface ProdukDAO {
-    public void insert(Produk produk);
-    public void update(Produk produk);
-    public void delete(long id);
+public interface ProdukDAO extends GeneralDAO {
+
     public Produk getById(long id);
     public List<Produk> getAll();
+    public List<Produk> getByNama(String key);
 }

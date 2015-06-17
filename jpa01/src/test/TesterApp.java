@@ -25,17 +25,10 @@ public class TesterApp {
                 = Persistence.createEntityManagerFactory("jpa01PU");
         EntityManager em = emf.createEntityManager();
 
-        KategoriDAO katDao = new KategoriDAOImpl(em);
-        
-        Produk produk = new Produk();
-        produk.setKode("P002");
-        produk.setNama("Monitor 21 inc LG");
-        produk.setHarga(120000);
-        produk.setKategori(katDao.getById(1));
-        
         ProdukDAO prodDAO = new ProdukDAOImpl(em);
-        prodDAO.insert(produk);
-        System.out.println("Done!");
+        for(Produk p : prodDAO.getByNama("17")){
+            System.out.println(p.getKode()+ " " + p.getNama());
+        }
 
     }
 

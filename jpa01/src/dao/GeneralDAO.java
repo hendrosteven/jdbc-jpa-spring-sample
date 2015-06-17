@@ -5,14 +5,12 @@
  */
 package dao;
 
-import entity.Kategori;
-import java.util.List;
-
 /**
  *
  * @author user
  */
-public interface KategoriDAO extends GeneralDAO{  
-    public Kategori getById(long id);
-    public List<Kategori> getAll();
+public interface GeneralDAO {
+    public void insert(Object obj);
+    public void update(Object obj);
+    public void delete(Object obj);
 }

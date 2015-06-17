@@ -15,48 +15,10 @@ import javax.persistence.EntityManager;
  *
  * @author user
  */
-public class ProdukDAOImpl implements ProdukDAO {
-
-    private EntityManager em;
+public class ProdukDAOImpl extends GeneralDAOImpl implements ProdukDAO {
 
     public ProdukDAOImpl(EntityManager em) {
-        this.em = em;
-    }
-
-    @Override
-    public void insert(Produk produk) {
-        this.em.getTransaction().begin();
-        try {
-            this.em.persist(produk);
-            this.em.getTransaction().commit();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            this.em.getTransaction().rollback();
-        }
-    }
-
-    @Override
-    public void update(Produk produk) {
-        this.em.getTransaction().begin();
-        try {
-            this.em.merge(produk);
-            this.em.getTransaction().commit();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            this.em.getTransaction().rollback();
-        }
-    }
-
-    @Override
-    public void delete(long id) {
-        this.em.getTransaction().begin();
-        try {
-            this.em.remove(this.em.find(Produk.class, id));
-              this.em.getTransaction().commit();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-              this.em.getTransaction().rollback();
-        }
+        super(em);
     }
 
     @Override
@@ -75,6 +37,20 @@ public class ProdukDAOImpl implements ProdukDAO {
         List<Produk> produks = new ArrayList<Produk>();
         try {
             produks = this.em.createQuery("SELECT p FROM Produk p")
+                    .getResultList();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return produks;
+    }
+
+    @Override
+    public List<Produk> getByNama(String key) {
+        List<Produk> produks = new ArrayList<Produk>();
+        try {
+            produks = this.em.createQuery("SELECT p FROM Produk "
+                    + "p WHERE p.nama LIKE :param")
+                    .setParameter("param", "%" + key + "%")
                     .getResultList();
         } catch (Exception ex) {
             ex.printStackTrace();

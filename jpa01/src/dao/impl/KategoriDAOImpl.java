@@ -15,41 +15,12 @@ import javax.persistence.EntityManager;
  *
  * @author user
  */
-public class KategoriDAOImpl implements KategoriDAO{
+public class KategoriDAOImpl extends GeneralDAOImpl implements KategoriDAO{
+
+    public KategoriDAOImpl(EntityManager em) {
+        super(em); //eksekusi konstruktor super classnya
+    }
     
-    private EntityManager em;
-    
-    public KategoriDAOImpl(EntityManager em){
-        this.em = em;
-    }
-
-    @Override
-    public void insert(Kategori kategori) {
-        try{
-            this.em.persist(kategori);
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
-
-    @Override
-    public void update(Kategori kategori) {
-        try{
-            this.em.merge(kategori);
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
-
-    @Override
-    public void delete(long id) {
-        try{
-            this.em.remove(this.em.find(Kategori.class, id));
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
-
     @Override
     public Kategori getById(long id) {
         Kategori kat = null;
