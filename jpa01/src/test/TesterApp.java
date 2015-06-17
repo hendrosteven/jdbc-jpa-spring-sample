@@ -5,7 +5,11 @@
  */
 package test;
 
-import entity.Kategori;
+import dao.KategoriDAO;
+import dao.ProdukDAO;
+import dao.impl.KategoriDAOImpl;
+import dao.impl.ProdukDAOImpl;
+import entity.Produk;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,83 +20,23 @@ import javax.persistence.Persistence;
  */
 public class TesterApp {
 
-    public static void main(String[] args){
-        TesterApp tes = new TesterApp();
-        Kategori kat = tes.readById(1);
-        System.out.println(kat.getNama());
-        kat.setNama("Monitor 20 inc");
-        tes.update(kat);
-        System.out.println("Done!");
-        tes.delete(2);
-    }
-    
-     public void delete(long id) {
-        EntityManagerFactory emf = 
-                Persistence.createEntityManagerFactory("jpa01PU");
-        EntityManager em = emf.createEntityManager();        
-        em.getTransaction().begin();
-        try {
-            em.remove(em.find(Kategori.class, id));
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            em.getTransaction().rollback();
-        } finally {
-            em.close();
-        }
-    }
-    
-    public void update(Object object) {
-        EntityManagerFactory emf = 
-                Persistence.createEntityManagerFactory("jpa01PU");
-        EntityManager em = emf.createEntityManager();        
-        em.getTransaction().begin();
-        try {
-            em.merge(object);            
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            em.getTransaction().rollback();
-        } finally {
-            em.close();
-        }
-    }
-    
-    public Kategori readById(long id) {
-        EntityManagerFactory emf = 
-                Persistence.createEntityManagerFactory("jpa01PU");
+    public static void main(String[] args) {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("jpa01PU");
         EntityManager em = emf.createEntityManager();
-        Kategori kat = null;
-        em.getTransaction().begin();
-        try {
-            kat = em.find(Kategori.class, id);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            em.getTransaction().rollback();
-        } finally {
-            em.close();
-        }
-        return kat;
-    }
-    
-    
-    
-    public void persist(Object object) {
-        EntityManagerFactory emf = 
-                Persistence.createEntityManagerFactory("jpa01PU");
-        EntityManager em = emf.createEntityManager();
+
+        KategoriDAO katDao = new KategoriDAOImpl(em);
         
-        em.getTransaction().begin();
-        try {
-            em.persist(object);            
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            em.getTransaction().rollback();
-        } finally {
-            em.close();
-        }
+        Produk produk = new Produk();
+        produk.setKode("P002");
+        produk.setNama("Monitor 21 inc LG");
+        produk.setHarga(120000);
+        produk.setKategori(katDao.getById(1));
+        
+        ProdukDAO prodDAO = new ProdukDAOImpl(em);
+        prodDAO.insert(produk);
+        System.out.println("Done!");
+
     }
-    
+
 }

@@ -3,6 +3,7 @@
   <persistence-unit name="jpa01PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entity.Kategori</class>
+    <class>entity.Produk</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dblatihan?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="admin"/>
