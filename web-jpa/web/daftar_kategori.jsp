@@ -55,7 +55,13 @@
                                 <td style="width: 10%">${no}</td>
                                 <td>${kategori.kode}</td>
                                 <td>${kategori.nama}</td>
-                                <td style="width: 10%"><a href="deletekategori?id=${kategori.id}" class="label alert">Del</a></td>
+                                <td style="width: 10%">
+                                    <a href="deletekategori?id=${kategori.id}" class="label alert">Del</a>
+                                    <a href="#" data-reveal-id="editModal"  
+                                       class="label success" 
+                                       onclick="editKategori(${kategori.id},'${kategori.kode}',
+                                                   '${kategori.nama}')">Edit</a>
+                                </td>
                             </tr>
                             <c:set var="no" value="${no+1}"/>
                         </c:forEach>
@@ -63,10 +69,28 @@
                 </table>
             </div>
         </div>
+
+        <div id="editModal" class="reveal-modal small" data-reveal 
+             aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+            <h2>Edit Kategori</h2>
+            <form action="updatekategori" method="post">
+                <p>Kode : <input type="text" name="txtKode" id="txtKode"/></p>
+                <p>Nama : <input type="text" name="txtNama" id="txtNama"/></p>
+                <input type="hidden" id="txtId" name="txtId"/>
+                <p><input type="submit" value="Simpan" class="button"/></p>
+            </form>
+            <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+
         <script src="assets/js/vendor/jquery.js"></script>
         <script src="assets/js/foundation.min.js"></script>
         <script>
             $(document).foundation();
+            function editKategori(id, kode, nama) {
+               $('#txtId').val(id);
+               $('#txtKode').val(kode);
+               $('#txtNama').val(nama);
+            }
         </script>
     </body>
 </html>
