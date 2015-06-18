@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -20,13 +21,13 @@
             <section class="top-bar-section">
                 <!-- Right Nav Section -->
                 <ul class="right">
-                    <li class="active"><a href="index.jsp">Home</a></li>
+                    <li><a href="index.jsp">Home</a></li>
                     <li><a href="kategori">Kategori</a></li>
                     <li class="has-dropdown">
                         <a href="#">Produk</a>
                         <ul class="dropdown">
                             <li><a href="produk">Daftar Produk</a></li>
-                            <li><a href="inputproduk">Input Produk</a></li>
+                            <li class="active"><a href="inputproduk">Input Produk</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -35,10 +36,18 @@
         <br/>
         <div class="row">
             <div class="large-8 columns">
-                <h3>Input Kategori</h3>
-                <form action="simpankategori" method="post">
+                <h3>Input Produk</h3>
+                <form action="simpanproduk" method="post">
                     <p>Kode : <input type="text" name="txtKode"/></p>
                     <p>Nama : <input type="text" name="txtNama"/></p>
+                    <p>Harga : <input type="text" name="txtHarga"/></p>
+                    <p>Kategori : 
+                        <select name="selKategori">
+                            <c:forEach items="${kategoris}" var="kategori">
+                                <option value="${kategori.id}">${kategori.nama}</option>
+                            </c:forEach>
+                        </select>
+                    </p>
                     <p><input type="submit" value="Simpan" class="button"/></p>
                 </form>
             </div>

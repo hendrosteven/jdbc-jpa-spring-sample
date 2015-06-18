@@ -12,6 +12,18 @@
         <servlet-name>DeleteKategoriServlet</servlet-name>
         <servlet-class>web.DeleteKategoriServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProdukServlet</servlet-name>
+        <servlet-class>web.ProdukServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InputProdukServlet</servlet-name>
+        <servlet-class>web.InputProdukServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SimpanProdukServlet</servlet-name>
+        <servlet-class>web.SimpanProdukServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>KategoriServlet</servlet-name>
         <url-pattern>/kategori</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>DeleteKategoriServlet</servlet-name>
         <url-pattern>/deletekategori</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdukServlet</servlet-name>
+        <url-pattern>/produk</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InputProdukServlet</servlet-name>
+        <url-pattern>/inputproduk</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SimpanProdukServlet</servlet-name>
+        <url-pattern>/simpanproduk</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

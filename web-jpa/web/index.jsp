@@ -25,8 +25,8 @@
                     <li class="has-dropdown">
                         <a href="#">Produk</a>
                         <ul class="dropdown">
-                            <li><a href="#">Daftar Produk</a></li>
-                            <li><a href="#">Input Produk</a></li>
+                            <li><a href="produk">Daftar Produk</a></li>
+                            <li><a href="inputproduk">Input Produk</a></li>
                         </ul>
                     </li>
                 </ul>
