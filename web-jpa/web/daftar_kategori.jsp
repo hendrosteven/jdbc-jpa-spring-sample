@@ -21,7 +21,7 @@
             <section class="top-bar-section">
                 <!-- Right Nav Section -->
                 <ul class="right">
-                    <li ><a href="#">Home</a></li>
+                    <li ><a href="index.jsp">Home</a></li>
                     <li class="active"><a href="kategori">Kategori</a></li>
                     <li class="has-dropdown">
                         <a href="#">Produk</a>
