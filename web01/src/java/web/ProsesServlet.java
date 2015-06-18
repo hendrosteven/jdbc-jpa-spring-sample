@@ -54,8 +54,9 @@ public class ProsesServlet extends HttpServlet {
         persons.add(person);
         sesi.setAttribute("persons", persons);
         
-        RequestDispatcher rd = request.getRequestDispatcher("daftar.jsp");
-        rd.forward(request, response);
+        //RequestDispatcher rd = request.getRequestDispatcher("daftar.jsp");
+        //rd.forward(request, response);
+        response.sendRedirect("daftar.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

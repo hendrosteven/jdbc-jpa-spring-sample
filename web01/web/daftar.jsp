@@ -1,6 +1,4 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="obj.Person"%>
-<%@page import="java.util.List"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
     <head>
         <title>JSP Sample</title>
@@ -15,28 +13,23 @@
                 <td>Jenkel</td>
                 <td>Hobi</td>
             </tr>
-            <%
-                List<Person> persons = (ArrayList<Person>) 
-                        session.getAttribute("persons");
-                int no = 1;
-                for (Person p : persons) {
-            %>
-            <tr>
-                <td><%= no%></td>
-                <td><%= p.getNama()%></td>
-                <td><%= p.getAlamat()%></td>
-                <td><%= p.getJenkel()%></td>
-                <td>
-                    <ul>
-                        <%
-                            for (String hb : p.getHobi()) {
-                        %>
-                        <li><%= hb%></li>
-                            <%}%>
-                    </ul>
-                </td>
-            </tr>  
-            <% ++no; } %>
+            <c:set var="no" value="1"/>
+            <c:forEach items="${persons}" var="person">
+                <tr>
+                    <td>${no}.</td>
+                    <td>${person.nama}</td>
+                    <td>${person.alamat}</td>
+                    <td>${person.jenkel}</td>
+                    <td>
+                        <ul>
+                            <c:forEach items="${person.hobi}" var="hobi">
+                              <li>${hobi}</li>
+                            </c:forEach>
+                        </ul>
+                    </td>
+                </tr>
+                <c:set var="no" value="${no+1}"/>
+            </c:forEach>
         </table>
     </body>
 </html>
