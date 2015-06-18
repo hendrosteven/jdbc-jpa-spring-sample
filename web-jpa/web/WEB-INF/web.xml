@@ -24,6 +24,10 @@
         <servlet-name>SimpanProdukServlet</servlet-name>
         <servlet-class>web.SimpanProdukServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateKategoriServlet</servlet-name>
+        <servlet-class>web.UpdateKategoriServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>KategoriServlet</servlet-name>
         <url-pattern>/kategori</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>SimpanProdukServlet</servlet-name>
         <url-pattern>/simpanproduk</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateKategoriServlet</servlet-name>
+        <url-pattern>/updatekategori</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
