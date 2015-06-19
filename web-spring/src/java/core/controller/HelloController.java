@@ -21,16 +21,8 @@ public class HelloController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String sayHello(HttpServletRequest request, ModelMap model) {
-        String nama = request.getParameter("nama");
-        String[] data = {"Data satu","Data dua","Data tiga","Data empat"};
-        model.addAttribute("data", data);
-        model.addAttribute("nama", nama);
         return "hello";
     }
 
-    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String sayWelcome() {
-        return "welcome";
-    }
 
 }

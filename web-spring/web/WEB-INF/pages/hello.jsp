@@ -21,8 +21,8 @@
             <section class="top-bar-section">
                 <!-- Right Nav Section -->
                 <ul class="right">
-                    <li ><a href="index.jsp">Home</a></li>
-                    <li class="active"><a href="kategori">Kategori</a></li>
+                    <li class="active"><a href="hello">Home</a></li>
+                    <li><a href="kategori">Kategori</a></li>
                     <li class="has-dropdown">
                         <a href="#">Produk</a>
                         <ul class="dropdown">
@@ -37,13 +37,7 @@
 
         <div class="row">
             <div class="large-12 columns">
-                <h1>Hello World</h1>
-                <h4>${nama}</h4>
-                <ul>
-                    <c:forEach items="${data}" var="str">
-                        <li>${str}</li>
-                    </c:forEach>
-                </ul>
+                <h1>Selamata datang..</h1>                
             </div>
         </div>
 
