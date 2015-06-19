@@ -1,3 +1,5 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <jsp:include page="header.jsp"/>
 <div class="row">
     <div class="large-8 columns">
