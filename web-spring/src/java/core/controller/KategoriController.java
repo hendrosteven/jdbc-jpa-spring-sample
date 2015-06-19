@@ -50,4 +50,21 @@ public class KategoriController {
         kategoriDAO.delete(kategoriDAO.getById(id));
         return "redirect:/kategori";
     }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(HttpServletRequest request) {
+        String kode = request.getParameter("txtKode");
+        String nama = request.getParameter("txtNama");
+        Kategori kat = new Kategori();
+        kat.setKode(kode);
+        kat.setNama(nama);
+        kategoriDAO.insert(kat);
+        return "redirect:/kategori";
+    }
+    
+     @RequestMapping(value = "/insert", method = RequestMethod.GET)
+    public String insert(){
+        return "input_kategori";
+    }
+
 }

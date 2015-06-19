@@ -37,7 +37,7 @@
 
         <div class="row">
             <div class="large-12 columns">
-                <a href="input_kategori.jsp" class="button small">Insert New</a>
+                <a href="kategori/insert" class="button small">Insert New</a>
                 <h3>Daftar Kategori</h3>
                 <table style="width: 100%">
                     <thead>
